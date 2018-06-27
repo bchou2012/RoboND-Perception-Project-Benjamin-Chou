@@ -162,7 +162,9 @@ For the SVC kernel in `train_svm.py`in `/sensor_stick_scripts/`, it was set to l
 Checking the output.yaml files against the pick\_list and dropbox YAML files in `/pr2_robot/config`, we had the following results:
 
 World 1: 3/3
+
 World 2: 5/5
+
 World 3: 7/8
 
 For World 3, the glue was consistently misidentified throughout code testing. 
