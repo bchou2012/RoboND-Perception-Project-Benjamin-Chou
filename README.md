@@ -1,6 +1,10 @@
 Udacity Perception Project Writeup
 =
 
+## Revision Log
+**V1.1**:
+Corrected writeup based on Udacity Reviewer feedback. 
+
 This project goal is to implement a perception pipeline, from extracting and training models for recognition, implementing filters and image processing, to identifying simulated RGB objects and outputting their identities and locations.
 
 ## Feature Extraction and SVM Model Training
@@ -13,22 +17,15 @@ Using the supplied sensor stick code from the class exercises, we extract featur
 
 <img src="https://github.com/bchou2012/RoboND-Perception-Project-Benjamin-Chou/blob/master/images/capture_training.png?raw=true" alt="Feature Extraction" width="640px">
 
-Initially we used 100 captures per model, but during later testing with the perception pipeline with world_3 the identification of objects was inconsistent. This resulted in rerunning the feature extraction with 500 captures, which provided more accurate object identification but much longer extraction run time. See `capture_features_project_1.py,
-capture_features_project_2.py, capture_features_project_3.py` in the `/sensor_stick_scripts/` folder.  
+Initially we used 100 captures per model, but during later testing with the perception pipeline with world_3 the identification of objects was inconsistent. This resulted in rerunning the feature extraction with 500 captures, which provided more accurate object identification but much longer extraction run time. See `capture_features_project_3.py` in the `/sensor_stick_scripts/` folder.  
 
 **SVM Training**
 
 Each training set for each world was then trained with `train_svm.py`, included in the `/sensor_stick_scripts/` folder with the following identification matrix results:
 
-*World_1* 
+~~World_1~~
 
-<img src="https://github.com/bchou2012/RoboND-Perception-Project-Benjamin-Chou/blob/master/images/Confusion_1.png?raw=true" alt="World_1" width="480px">
-<img src="https://github.com/bchou2012/RoboND-Perception-Project-Benjamin-Chou/blob/master/images/Normalized_confusion_1.png?raw=true" alt="World_1 Normalized" width="480px">
-
-*World_2* 
-
-<img src="https://github.com/bchou2012/RoboND-Perception-Project-Benjamin-Chou/blob/master/images/Confusion_2.png?raw=true" alt="World_2" width="480px">
-<img src="https://github.com/bchou2012/RoboND-Perception-Project-Benjamin-Chou/blob/master/images/Normalized_confusion_2.png?raw=true" alt="World_2 Normalized" width="480px">
+~~World_2~~ 
 
 *World_3* 
 
@@ -38,7 +35,7 @@ Each training set for each world was then trained with `train_svm.py`, included 
 Through trial and error, for the SVC kernel in `/sensor_stick_scripts/`, line 66 was set to 
 `clf = svm.SVC(kernel='linear')` The other kernel options `poly, rbf, sigmoid` did not produce better results for this project
 
-For the purposes of this project, having over 90% success rate with all objects between the 3 scenarios is acceptable. With our training information saved, we move onto the perception pipeline. 
+For the purposes of this project, having over 90% success rate with all objects ~~between the 3 scenarios~~ from training set 3 is acceptable. With our training information saved, we move onto the perception pipeline. 
 
 The `compute_color_histograms()` function in the capture\_features files was set to `using_hsv=True` for reasons detailed in the object recognition writeup. 
 
@@ -123,13 +120,13 @@ We next calculate the surface normals with `get_normals()` then construct the hi
 
 After concatenating the color and surface histograms, we make the predictions with `clf.predict()` and publish. 
 
-**World 1 Predictions**
+**World 1 Predictions** (_updated after rerunning with model_3.sav_)
 
-<img src="https://github.com/bchou2012/RoboND-Perception-Project-Benjamin-Chou/blob/master/images/output_labels_1.png?raw=true" alt="World 1 Predictions" width="640px">
+<img src="https://github.com/bchou2012/RoboND-Perception-Project-Benjamin-Chou/blob/master/images/world_1_labels.png?raw=true" alt="World 1 Predictions" width="640px">
 
-**World 2 Predictions**
+**World 2 Predictions** (_updated after rerunning with model_3.sav_)
 
-<img src="https://github.com/bchou2012/RoboND-Perception-Project-Benjamin-Chou/blob/master/images/output_labels_2.png?raw=true" alt="World 2 Predictions" width="640px">
+<img src="https://github.com/bchou2012/RoboND-Perception-Project-Benjamin-Chou/blob/master/images/world_2_labels.png?raw=true" alt="World 2 Predictions" width="640px">
 
 **World 3 Predictions**
 
