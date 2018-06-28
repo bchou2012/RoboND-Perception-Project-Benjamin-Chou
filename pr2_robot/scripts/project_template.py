@@ -229,12 +229,12 @@ def pr2_mover(object_list):
     # TODO: Initialize variables
     #initialize YAML variables
     test_scene_num = Int32()
-    test_scene_num.data = 3 #1,2,or 3
+    test_scene_num.data = 1 #1,2,or 3
     object_name = String()
     arm_name = String()
     pick_pose = Pose()
     place_pose = Pose()
-    output_name = 'output_3.yaml'#output_[scene].yaml
+    output_name = 'output_2.yaml'#output_[scene].yaml
     yaml_output = []
     
     #Intialize parameter lists
@@ -331,7 +331,7 @@ if __name__ == '__main__':
     # Initialize color_list
     get_color_list.color_list = []
     # TODO: Load Model From disk
-    model = pickle.load(open('model_3.sav', 'rb')) #file format model_[no].sav
+    model = pickle.load(open('model_3.sav', 'rb')) #world 3 model used for all world outputs
     clf = model['classifier']
     encoder = LabelEncoder()
     encoder.classes_ = model['classes']
