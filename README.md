@@ -21,7 +21,7 @@ Initially we used 100 captures per model, but during later testing with the perc
 
 **SVM Training**
 
-Each training set for each world was then trained with `train_svm.py`, included in the `/sensor_stick_scripts/` folder with the following identification matrix results:
+World 3, having the most models, was used to train on `train_svm.py`, included in the `/sensor_stick_scripts/` folder with the following identification matrix results:
 
 ~~World_1~~
 
@@ -132,7 +132,7 @@ After concatenating the color and surface histograms, we make the predictions wi
 
 <img src="https://github.com/bchou2012/RoboND-Perception-Project-Benjamin-Chou/blob/master/images/output_labels_3.png?raw=true" alt="World 3 Predictions" width="640px">
 
-##Publish YAML Files
+## Publish YAML Files
 
 Now that we have our predictions, we need to publish the output as YAML files. 
 
